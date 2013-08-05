@@ -1,6 +1,6 @@
 clojure-koans
 =============
 
-Solutions for Clojure Koans
+Solutions to Clojure Koans
 
 https://github.com/functional-koans/clojure-koans
