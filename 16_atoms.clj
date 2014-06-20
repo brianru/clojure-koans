@@ -11,20 +11,20 @@
 
   "Keep taxes out of this: swapping requires no transaction"
   (= 5 (do
-         (swap! atomic-clock (fn [x] (+ x 4)))
+         (swap! atomic-clock (fn [x] (+ x 5)))
          @atomic-clock))
 
   "Any number of arguments might happen during a swap"
-  (= 20 (do
+  (= 15 (do
           (swap! atomic-clock + 1 2 3 4 5)
           @atomic-clock))
 
   "Atomic atoms are atomic"
-  (= 20 (do
+  (= 0 (do
           (compare-and-set! atomic-clock 100 :fin)
           @atomic-clock))
 
   "When your expectations are aligned with reality things, proceed that way"
   (= :fin (do
-            (compare-and-set! atomic-clock 20 :fin)
+            (compare-and-set! atomic-clock 0 :fin)
             @atomic-clock)))
